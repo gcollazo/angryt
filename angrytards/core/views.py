@@ -19,7 +19,7 @@ def stories(request):
 			'title':item.title.contents[0],
 			'url':item.guid.contents[0],
 			'id':item.guid.contents[0].split('/')[-1].split('.')[0].split('-')[-1],
-			'comments':'/story/%s/comments/' % id
+			'comments':'/story/%s/comments/' % item.guid.contents[0].split('/')[-1].split('.')[0].split('-')[-1]
 		})
 
 	return HttpResponse(json.dumps(stories), mimetype='application/json')
