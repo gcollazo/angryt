@@ -8,4 +8,5 @@ urlpatterns = patterns('core',
 	url(r'^$', 'views.home', name='home'),
 	url(r'^story/$', 'views.stories', name='stories'),
 	url(r'^story/(?P<story_id>\d+)/comments/$', 'views.comments', name='comments'),
+	url(r'^story/(?P<story_id>\d+)/comments/(?P<page>\d+)/$', 'views.comments', name='comments_page'),
 )

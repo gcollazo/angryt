@@ -1,4 +1,5 @@
 from BeautifulSoup import BeautifulStoneSoup, BeautifulSoup
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import urllib2
 import json
@@ -26,15 +27,16 @@ def stories(request):
 	return HttpResponse(json.dumps(stories), mimetype='application/json')
 
 
-def comments(request, story_id):
+def comments(request, story_id, page=None):
+	if page == None:
+		return redirect('/story/%s/comments/1/' % story_id)
+	
 	count = get_comment_count(story_id)
 	pages = count / 10
 	if count % 10 > 0:
 		pages = pages + 1
 	
-	comments = []
-	for page in range(pages):
-		comments = comments + get_comment_page(story_id, page + 1)
+	comments = get_comment_page(story_id, page, pages, request.META['HTTP_HOST'])
 
 	return HttpResponse(json.dumps(comments), mimetype='application/json')
 
@@ -51,7 +53,7 @@ def get_comment_count(story_id):
 	return int(count)
 
 
-def get_comment_page(story_id, page):
+def get_comment_page(story_id, page, pages, host):
 	comment_url = 'http://www.elnuevodia.com/XStatic/endi/template/cargaListaComentarios.aspx?intConfigurationId=12275&intElementId=%s&p=%s'
 	
 	opener = urllib2.build_opener()
@@ -61,14 +63,31 @@ def get_comment_page(story_id, page):
 
 	comentarios = soup.findAll('div', attrs={'class': 'comentarios'})
 
-	comments = []
+	comments = {
+		'comments':[],
+		'current_page': int(page),
+		'pages': pages
+	}
+
+	if pages > int(page):
+		comments['next_page'] = 'http://%s/story/%s/comments/%s/' % (host, story_id, int(page) + 1)
+	else:
+		comments['next_page'] = None
+	
+	if int(page) != 1 :
+		comments['prev_page'] = 'http://%s/story/%s/comments/%s/' % (host, story_id, int(page) - 1)
+	else:
+		comments['prev_page'] = None
+
 	for c in comentarios:
 		username = c.findAll('h2')[0].contents[-1].replace('\r\n        ', '').replace('\r\n        ', '')
 		comment = c.findAll('p', attrs={'class': 'copete clearfix'})[0].contents[0].replace('\r\n        ', '')
 		
-		comments.append({
+		the_comment = {
 			'username':username,
-			'comment':comment
-		})
+			'comment':comment,
+		}
+		
+		comments['comments'].append(the_comment)
 	
 	return comments
