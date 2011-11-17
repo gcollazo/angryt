@@ -4,16 +4,9 @@ from django.conf.urls.defaults import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
-
-	url(r'^$', 'core.views.home'),
-    # Examples:
-    # url(r'^$', 'angrytards.views.home', name='home'),
-    # url(r'^angrytards/', include('angrytards.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+urlpatterns = patterns('core',
+	url(r'^$', 'views.home', name='home'),
+	url(r'^story/$', 'views.stories', name='stories'),
+	url(r'^story/(?P<story_id>\d+)/comments/$', 'views.comments', name='comments'),
+	url(r'^story/(?P<story_id>\d+)/comments/(?P<page>\d+)/$', 'views.comments', name='comments_page'),
 )
