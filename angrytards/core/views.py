@@ -36,7 +36,7 @@ def comments(request, story_id, page=None):
 	if count % 10 > 0:
 		pages = pages + 1
 	
-	comments = get_comment_page(story_id, page, pages, request.META['HTTP_HOST'])
+	comments = get_comment_page(story_id, count, page, pages, request.META['HTTP_HOST'])
 
 	return HttpResponse(json.dumps(comments), mimetype='application/json')
 
@@ -53,7 +53,7 @@ def get_comment_count(story_id):
 	return int(count)
 
 
-def get_comment_page(story_id, page, pages, host):
+def get_comment_page(story_id, count, page, pages, host):
 	comment_url = 'http://www.elnuevodia.com/XStatic/endi/template/cargaListaComentarios.aspx?intConfigurationId=12275&intElementId=%s&p=%s'
 	
 	opener = urllib2.build_opener()
@@ -66,7 +66,8 @@ def get_comment_page(story_id, page, pages, host):
 	comments = {
 		'comments':[],
 		'current_page': int(page),
-		'pages': pages
+		'pages': pages,
+		'count':count
 	}
 
 	if pages > int(page):
