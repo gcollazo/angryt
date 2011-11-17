@@ -25,13 +25,38 @@ def stories(request):
 
 	return HttpResponse(json.dumps(stories), mimetype='application/json')
 
-def comments(request, story_id, page=1):
-	base_url = 'http://www.elnuevodia.com/XStatic/endi/template/cargaListaComentarios.aspx?intConfigurationId=12275&intElementId=%s&p=%s'
+
+def comments(request, story_id):
+	count = get_comment_count(story_id)
+	pages = count / 10
+	if count % 10 > 0:
+		pages = pages + 1
+	
+	comments = []
+	for page in range(pages):
+		comments = comments + get_comment_page(story_id, page + 1)
+
+	return HttpResponse(json.dumps(comments), mimetype='application/json')
+
+
+def get_comment_count(story_id):
+	count_url = 'http://www.elnuevodia.com/XStatic/endi/template/cargaComentarios.aspx?intElementId=%s&intConfigurationId=12275&intOpcionId=0&blnMostrarForma=True&blnMostrarComentarios=True&blnModerarComentarios=True&strEmailComentarios='
 	
 	opener = urllib2.build_opener()
 	opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-	f = opener.open(base_url % (story_id, page))
+	f = opener.open(count_url % story_id)
+	soup = BeautifulSoup(f.read())
+
+	count = soup.findAll('span', attrs={'id': 'comentarios2'})[0].contents[0].replace('\r\n                        ', '')
+	return int(count)
+
+
+def get_comment_page(story_id, page):
+	comment_url = 'http://www.elnuevodia.com/XStatic/endi/template/cargaListaComentarios.aspx?intConfigurationId=12275&intElementId=%s&p=%s'
 	
+	opener = urllib2.build_opener()
+	opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+	f = opener.open(comment_url % (story_id, page))
 	soup = BeautifulSoup(f.read())
 
 	comentarios = soup.findAll('div', attrs={'class': 'comentarios'})
@@ -45,5 +70,5 @@ def comments(request, story_id, page=1):
 			'username':username,
 			'comment':comment
 		})
-		
-	return HttpResponse(json.dumps(comments), mimetype='application/json')
+	
+	return comments
