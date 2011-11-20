@@ -1,68 +1,20 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
 body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
-body {
-	font-size:100%;
-	font-family: Helvetica, Arial, sans-serif;
-	margin:20px;
+	font-family: Georgia, serif;
 	color:#353535;
 }
 
-h1 {
-	font-size:30px;
-	margin-bottom:20px;
-	font-weight:bold;
+.date {
+	color:#808080;
+	margin:10px 0px;
+}
+
+.share {
+	text-align: right;
+	margin:10px 0px;
 }
 
 a {
-	color:#227ce7;
+	color:#353535;
 	text-decoration:none;
 }
 
@@ -70,21 +22,35 @@ a:hover {
 	text-decoration:underline;
 }
 
-ul {
-	margin-left:20px;
+.logo span {
+	display:block;
+	font-size:16px;
+	line-height:40px;
+	color:#b7b7b7;
 }
 
-li {
-	margin-bottom:10px;
+.logo span a {
+	text-decoration:none;
+	color:#b7b7b7;
 }
 
-.username {
-	font-weight:bold;
-	color:#016b7d;
+.logo span a:hover {
+	text-decoration:underline;
 }
 
+.center {
+	text-align: center;
+}
 
+.large-story {
+	font-size:50px;
+}
 
+.medium-story {
+	font-size:30px;
+}
 
-
+.small-story {
+	font-size:20px;
+}
 
