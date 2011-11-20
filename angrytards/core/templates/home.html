@@ -45,22 +45,22 @@
 <body>
     <div class="container">
         <div class="span-24">
-            <div class="span-12 date" id="date">Lunes, 21 de Noviembre de 2011</div>
+            <div class="span-12 date" id="date">{{ date|date:"l, F j, Y" }}</div>
             <div class="span-12 last share"><button>Tweet</button><button>+1</button><button>Like</button></div>
         </div>
         <hr>
 
         <div class="span-24 center logo">
             <img src="{{ STATIC_URL }}img/logo.png" alt="El Día" title="El Día">
-            <span>Los commentarios de <a href="http://elnuevodia.com">elnuevodia.com</a>, lo peor del internet, fácil de leer</span>
+            <span>Los commentarios de <a href="http://elnuevodia.com">elnuevodia.com</a>: lo peor del internet, fácil de leer</span>
         </div>
         <hr>
         
-        <div id="news"></div>
+        <div id="news"><div id="loading">Loading...</div></div>
 
-        <div class="span-24">
-            <div class="span-24">Este site no está afiliado de ninguna forma a <a href="http://elnuevodia.com">elnuevodia.com</a>.</div>
-        </div>
+        <hr class="space">
+        <hr class="space">
+        <hr class="space">
         <hr class="space">
     </div>
 </body>

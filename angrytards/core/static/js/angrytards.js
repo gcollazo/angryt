@@ -27,6 +27,7 @@ $(document).ready(function(){
     var otherRows = {stories:[]};
 
     function gotDataCallback(data){
+        $("#loading").remove();
         for(var i = 0; i < data.length; i++){
             
             if(i === 0){

@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import urllib2
 import json
+from datetime import datetime
 
 def home(request):
-	return render(request,'home.html')
+	date = datetime.now()
+	return render(request,'home.html', locals())
 
 def stories(request):
 	opener = urllib2.build_opener()
