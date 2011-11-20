@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Angry Tards</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/underscore.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/angrytards.js"></script>
+    <script type="text/template" id="story-template">
+        <li><a href="<%= comments %>" class="comment-url"><%= title %></a></li>
+    </script>
+    <script type="text/template" id="comment-template">
+        <ul>
+            <% _.each(comments, function(comment){ %>
+                <li>[<%= comment.username %>]: <%= comment.comment %></li>
+            <% }); %>
+        </ul>
+    </script>
+</head>
+<body>
+    <ul id="app"></ul>
+</body>
+</html>

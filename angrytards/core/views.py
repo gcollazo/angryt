@@ -5,7 +5,7 @@ import urllib2
 import json
 
 def home(request):
-	return HttpResponse('Home')
+	return render(request,'home.html')
 
 def stories(request):
 	opener = urllib2.build_opener()
@@ -49,7 +49,7 @@ def get_comment_count(story_id):
 	f = opener.open(count_url % story_id)
 	soup = BeautifulSoup(f.read())
 
-	count = soup.findAll('span', attrs={'id': 'comentarios2'})[0].contents[0].replace('\r\n                        ', '')
+	count = soup.findAll('span', attrs={'id': 'comentarios2'})[0].contents[0].lstrip().rstrip()
 	return int(count)
 
 
@@ -81,14 +81,18 @@ def get_comment_page(story_id, count, page, pages, host):
 		comments['prev_page'] = None
 
 	for c in comentarios:
-		username = c.findAll('h2')[0].contents[-1].replace('\r\n        ', '').replace('\r\n        ', '')
-		comment = c.findAll('p', attrs={'class': 'copete clearfix'})[0].contents[0].replace('\r\n        ', '')
-		
-		the_comment = {
-			'username':username,
-			'comment':comment,
-		}
-		
-		comments['comments'].append(the_comment)
+		username = c.findAll('h2')[0].contents[-1].lstrip().rstrip()
+
+		if username != 'No existen comentarios':
+			comment = c.findAll('p', attrs={'class': 'copete clearfix'})[0].contents[0].lstrip().rstrip()
+			
+			the_comment = {
+				'username':username,
+				'comment':comment,
+			}
+			
+			comments['comments'].append(the_comment)
+		else:
+			comments = []
 	
 	return comments
