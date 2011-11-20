@@ -32,10 +32,11 @@ $(document).ready(function(){
             
             if(i === 0){
                 app.append(largeStoryTemplate(data[i]));
-            } else if(i > 0 && i < 4) {
+            } else if(i > 0 && i < 7) {
                 secondRow.stories.push(data[i]);
                 if(secondRow.stories.length === 3){
                     app.append(mediumStoryTemplate(secondRow));
+                    secondRow.stories = [];
                 }
             } else {
                 otherRows.stories.push(data[i]);
