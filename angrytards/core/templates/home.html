@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Angry Tards</title>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/angrytards.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/underscore.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/angrytards.js"></script>
@@ -10,12 +11,13 @@
     <script type="text/template" id="comment-template">
         <ul>
             <% _.each(comments, function(comment){ %>
-                <li>[<%= comment.username %>]: <%= comment.comment %></li>
+                <li><span class="username">[<%= comment.username %>]</span>: <%= comment.comment %></li>
             <% }); %>
         </ul>
     </script>
 </head>
 <body>
+    <h1>AngryTards</h1>
     <ul id="app"></ul>
 </body>
 </html>
