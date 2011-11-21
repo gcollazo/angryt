@@ -20,8 +20,9 @@ $(document).ready(function(){
     //     });
     // });
 
-
-    $.getJSON('/story/', gotDataCallback);
+    if(app.length > 0){
+        $.getJSON('/story/', gotDataCallback);
+    }
 
     var secondRow = {stories:[]};
     var otherRows = {stories:[]};

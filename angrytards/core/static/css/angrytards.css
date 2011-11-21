@@ -54,3 +54,48 @@ a:hover {
 	font-size:20px;
 }
 
+.comment {
+	margin-bottom:40px;
+	font-size:30px;
+}
+
+.quote {
+	display:inline-block;
+	text-indent:-40px;
+	font-size:70px;
+	color:#d2d2d2;
+	line-height:0px;
+}
+
+.username {
+	text-align:right;
+	color:#d2d2d2;
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.pagination.next {
+	text-align:right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

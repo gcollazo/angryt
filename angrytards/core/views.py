@@ -1,3 +1,4 @@
+# encoding: utf-8
 from BeautifulSoup import BeautifulStoneSoup, BeautifulSoup
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -7,7 +8,9 @@ from datetime import datetime
 
 def home(request):
 	date = datetime.now()
+	page_title = 'El Día: Los commentarios de elnuevodia.com: lo peor del internet, fácil de leer'
 	return render(request,'home.html', locals())
+
 
 def stories(request):
 	opener = urllib2.build_opener()
@@ -30,6 +33,9 @@ def stories(request):
 
 
 def comments(request, story_id, page=None):
+	date = datetime.now()
+	page_title = 'El Día: Los commentarios de elnuevodia.com: lo peor del internet, fácil de leer'
+
 	if page == None:
 		return redirect('/story/%s/comments/1/' % story_id)
 	
@@ -40,7 +46,7 @@ def comments(request, story_id, page=None):
 	
 	comments = get_comment_page(story_id, count, page, pages, request.META['HTTP_HOST'])
 
-	return HttpResponse(json.dumps(comments), mimetype='application/json')
+	return render(request, 'comments.html', locals())
 
 
 def get_comment_count(story_id):

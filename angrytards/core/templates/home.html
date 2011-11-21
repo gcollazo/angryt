@@ -1,71 +1,28 @@
-<html>
-<head>
-    <title>El Día: Los commentarios de elnuevodia.com, lo peor del internet, fácil de leer</title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/print.css" type="text/css" media="print"> 
-    <!--[if lt IE 8]>
-        <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection">
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/angrytards.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/underscore.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/angrytards.js"></script>
-    <script type="text/template" id="story-template">
-        <li><a href="<%= comments %>" class="comment-url"><%= title %></a></li>
-    </script>
-    <script type="text/template" id="comment-template">
-        <ul>
-            <% _.each(comments, function(comment){ %>
-                <li><span class="username">[<%= comment.username %>]</span>: <%= comment.comment %></li>
-            <% }); %>
-        </ul>
-    </script>
-    <script type="text/template" id="large-story-template">
-        <div class="span-24 center large-story"><a href="<%= comments %>" class="comment-url"><%= title %></a></div>
-        <hr>
-    </script>
-    <script type="text/template" id="medium-story-template">
-        <div class="span-24">
-            <div class="span-6 colborder medium-story"><a href="<%= stories[0].comments %>" class="comment-url"><%= stories[0].title %></a></div>
-            <div class="span-10 colborder medium-story"><a href="<%= stories[1].comments %>" class="comment-url"><%= stories[1].title %></a></div>
-            <div class="span-6 last medium-story"><a href="<%= stories[2].comments %>" class="comment-url"><%= stories[2].title %></a></div>
-        </div>
-        <hr>
-    </script>
-    <script type="text/template" id="small-story-template">
-        <div class="span-24">
-            <div class="span-5 colborder small-story"><a href="<%= stories[0].comments %>" class="comment-url"><%= stories[0].title %></a></div>
-            <div class="span-5 colborder small-story"><a href="<%= stories[1].comments %>" class="comment-url"><%= stories[1].title %></a></div>
-            <div class="span-5 colborder small-story"><a href="<%= stories[2].comments %>" class="comment-url"><%= stories[2].title %></a></div>
-            <div class="span-5 last small-story"><a href="<%= stories[3].comments %>" class="comment-url"><%= stories[3].title %></a></div>
-        </div>
-        <hr>
-    </script>
-</head>
-<body>
-    <div class="container">
-        <div class="span-24">
-            <div class="span-12 date" id="date">{{ date|date:"l, F j, Y" }}</div>
-            <div class="span-12 last share">
-                <button>Tweet</button>
-                <button>+1</button>
-                <button>Like</button>
-            </div>
-        </div>
-        <hr>
+{% extends 'base.html' %}
 
-        <div class="span-24 center logo">
-            <h1><a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="El Día" title="El Día"></a></h1>
-            <span>Los commentarios de <a href="http://elnuevodia.com">elnuevodia.com</a>: lo peor del internet, fácil de leer</span>
+{% block content %}
+<div class="container">
+    <div class="span-24">
+        <div class="span-12 date" id="date">{{ date|date:"l, F j, Y" }}</div>
+        <div class="span-12 last share">
+            <button>Tweet</button>
+            <button>+1</button>
+            <button>Like</button>
         </div>
-        <hr>
-        
-        <div id="news"><div id="loading">Loading...</div></div>
-
-        <hr class="space">
-        <hr class="space">
-        <hr class="space">
-        <hr class="space">
     </div>
-</body>
-</html>
+    <hr>
+
+    <div class="span-24 center logo">
+        <h1><a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="El Día" title="El Día"></a></h1>
+        <span>Los commentarios de <a href="http://elnuevodia.com">elnuevodia.com</a>: lo peor del internet, fácil de leer</span>
+    </div>
+    <hr>
+    
+    <div id="news"><div id="loading">Loading...</div></div>
+
+    <hr class="space">
+    <hr class="space">
+    <hr class="space">
+    <hr class="space">
+</div>
+{% endblock %}
