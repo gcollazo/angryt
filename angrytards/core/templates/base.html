@@ -1,6 +1,19 @@
 <html>
 <head>
     <title>{{ page_title }}</title>
+
+    <meta charset="UTF-8">
+    <meta property="og:title" content="El Día"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://eldia.24veces.com/"/>
+    <meta property="og:image" content="{{ STATIC_URL }}img/dia-share.jpg"/>
+    <meta property="og:site_name" content="-M"/>
+    <meta property="fb:admins" content="501641940"/>
+    <meta property="og:description" content="El Día: Los comentarios de elnuevodía.com ahora son fáciles de leer."/>
+
+    <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/print.css" type="text/css" media="print"> 
     <!--[if lt IE 8]>

@@ -8,7 +8,7 @@ from datetime import datetime
 
 def home(request):
 	date = datetime.now()
-	page_title = 'El Día: Los commentarios de elnuevodia.com: lo peor del internet, fácil de leer'
+	page_title = 'El Día: Los comentarios de elnuevodía.com ahora son fáciles de leer.'
 	return render(request,'home.html', locals())
 
 
@@ -34,7 +34,7 @@ def stories(request):
 
 def comments(request, story_id, page=None):
 	date = datetime.now()
-	page_title = 'El Día: Los commentarios de elnuevodia.com: lo peor del internet, fácil de leer'
+	page_title = 'El Día: Los comentarios de elnuevodía.com ahora son fáciles de leer.'
 
 	if page == None:
 		return redirect('/story/%s/comments/1/' % story_id)
