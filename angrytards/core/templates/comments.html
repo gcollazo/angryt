@@ -14,9 +14,20 @@
 
     <div class="span-24 center logo">
         <h1><a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="El Día" title="El Día"></a></h1>
-        <span>Los commentarios de <a href="http://elnuevodia.com">elnuevodia.com</a>: lo peor del internet, fácil de leer</span>
+        <span>Los comentarios de <a href="http://elnuevodia.com">elnuevodía.com</a> deprimen a cualquiera, ahora son fáciles de leer.</span>
+        </div>
+    <hr>
+
+    <div class="span-24 center large-story"><a href="{{ story.url }}" class="comment-url">{{ story.title }}</a></div>
+    <hr class="space">
+    <hr>
+
+    <div class="span-24">
+        <div class="span-11 colborder"><a href="/">&larr; Volver</a></div>
+        <div class="span-12 last right"><a href="{{ story.url }}" class="comment-url">Ver en elnuevodia.com &rarr;</a></div>
     </div>
     <hr>
+    <hr class="space">
     
     {% if comments.count %}
 
@@ -29,18 +40,20 @@
         {% endfor %}
 
         <div class="span-24">
-            <div class="span-12 pagination prev">
+            <div class="span-8 pagination prev">
                 {% if comments.prev_page %}<a href="{{ comments.prev_page }}">&larr; Página Anterior</a>{% else %}&nbsp;{% endif %}
             </div>
-            <div class="span-12 last pagination next">
+            <div class="span-8 pagination center">
+                Página {{ comments.current_page }} de {{ pages }}
+            </div>
+            <div class="span-8 last pagination next">
                 {% if comments.next_page %}<a href="{{ comments.next_page }}">Próxima Página &rarr;</a>{% else %}&nbsp;{% endif %}
             </div>
         </div>
 
     {% else %}
         <div class="span-24">
-            <h2>Nadie ha comentado en esta noticia</h2>
-            <a href="/">&larr; Volver</a>
+            <h2>Nadie ha comentado en esta noticia :(</h2>
         </div>
     {% endif %}
 

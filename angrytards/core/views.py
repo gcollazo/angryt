@@ -45,8 +45,28 @@ def comments(request, story_id, page=None):
 		pages = pages + 1
 	
 	comments = get_comment_page(story_id, count, page, pages, request.META['HTTP_HOST'])
+	story = get_story_with_id(story_id)
+	print story
 
 	return render(request, 'comments.html', locals())
+
+# Helpers
+def get_story_with_id(story_id):
+	opener = urllib2.build_opener()
+	opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+	f = opener.open('http://feeds.feedburner.com/elnuevodia/noticias')
+	
+	soup = BeautifulStoneSoup(f.read())
+
+	for item in soup.findAll('item'):
+		_story_id = item.guid.contents[0].split('/')[-1].split('.')[0].split('-')[-1]
+
+		if _story_id == story_id:
+			return {
+				'title':item.title.contents[0],
+				'url':item.guid.contents[0],
+				'id':story_id,
+			}
 
 
 def get_comment_count(story_id):
