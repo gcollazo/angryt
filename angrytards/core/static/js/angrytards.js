@@ -1,5 +1,13 @@
 $(document).ready(function(){
     
+    // Share buttons
+    $("#share-link").click(function(e){
+        e.preventDefault();
+        $(this).fadeOut('fast', function(){
+            $("#share-buttons").fadeIn('fast');
+        });
+    });
+
     var itemTemplate = _.template($("#story-template").html());
     var commentTemplate = _.template($("#comment-template").html());
 
@@ -10,15 +18,6 @@ $(document).ready(function(){
 
     // Insertion point
     var app = $("#news");
-
-    // $(".comment-url").live('click', function(e){
-    //     e.preventDefault();
-    //     var url = $(e.currentTarget).attr('href');
-    //     $(e.currentTarget).after('<ul></ul>');
-    //     $.getJSON(url, function(data){
-    //         $(e.currentTarget).parent().find('ul').append(commentTemplate(data));
-    //     });
-    // });
 
     if(app.length > 0){
         $.getJSON('/story/', gotDataCallback);

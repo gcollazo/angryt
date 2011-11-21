@@ -1,0 +1,30 @@
+<div class="span-24">
+    <div class="span-12 date" id="date">{{ date|date:"l, F j, Y" }}</div>
+    <div class="span-12 last share">
+        <a href="#" id="share-link">Tweet, +1 &amp; Like</a>
+        <div id="share-buttons">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="gcollazo">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+            
+            <!-- Place this tag where you want the +1 button to render -->
+            <g:plusone size="medium"></g:plusone>
+
+            <!-- Place this render call where appropriate -->
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+
+            <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Feldia.24veces.com&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=267628933258972" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="span-24 center logo">
+    <h1><a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="El Día" title="El Día"></a></h1>
+    <span>Los comentarios de <a href="http://elnuevodia.com">elnuevodía.com</a> ahora son fáciles de leer.</span>
+    </div>
+<hr>

@@ -82,7 +82,9 @@ a:hover {
 	text-align: right;
 }
 
-
+#share-buttons {
+	display:none;
+}
 
 
 

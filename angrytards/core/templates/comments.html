@@ -2,21 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <div class="span-24">
-        <div class="span-12 date" id="date">{{ date|date:"l, F j, Y" }}</div>
-        <div class="span-12 last share">
-            <button>Tweet</button>
-            <button>+1</button>
-            <button>Like</button>
-        </div>
-    </div>
-    <hr>
-
-    <div class="span-24 center logo">
-        <h1><a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="El Día" title="El Día"></a></h1>
-        <span>Los comentarios de <a href="http://elnuevodia.com">elnuevodía.com</a> deprimen a cualquiera, ahora son fáciles de leer.</span>
-        </div>
-    <hr>
+    {% include 'topbar.html' %}
 
     <div class="span-24 center large-story"><a href="{{ story.url }}" class="comment-url">{{ story.title }}</a></div>
     <hr class="space">
