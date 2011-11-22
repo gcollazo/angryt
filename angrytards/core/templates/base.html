@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>{{ page_title }}</title>
+    <title>{% if story.title %}{{ story.title}} | El Día{% else %}{{ page_title }}{% endif %}</title>
 
     <meta charset="UTF-8">
     <meta property="og:title" content="El Día"/>
