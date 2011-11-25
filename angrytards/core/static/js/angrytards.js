@@ -3,6 +3,7 @@ $(document).ready(function(){
     // Share buttons
     $("#share-link").click(function(e){
         e.preventDefault();
+        $(".to-hide").fadeOut('fast');
         $(this).fadeOut('fast', function(){
             $("#share-buttons").fadeIn('fast');
         });
