@@ -113,12 +113,14 @@ def get_comment_page(story_id, count, page, pages, host):
         comments['next_page_json'] = 'http://%s/story/%s/comments/%s.json' % (host, story_id, int(page) + 1)
     else:
         comments['next_page'] = None
+        comments['next_page_json'] = None
     
     if int(page) != 1 :
         comments['prev_page'] = 'http://%s/story/%s/comments/%s/' % (host, story_id, int(page) - 1)
         comments['prev_page_json'] = 'http://%s/story/%s/comments/%s.json' % (host, story_id, int(page) - 1)
     else:
         comments['prev_page'] = None
+        comments['prev_page_json'] = None
 
     for c in comentarios:
         username = c.findAll('h2')[0].contents[-1].lstrip().rstrip()
