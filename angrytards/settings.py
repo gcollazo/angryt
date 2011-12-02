@@ -4,6 +4,8 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+ENDI_FEED = 'http://feeds.feedburner.com/elnuevodia/noticias'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -13,16 +15,16 @@ MANAGERS = ADMINS
 PROJECT_PATH = os.sep.join(os.path.realpath(os.path.dirname(__file__)).split('/'))
 PROJECT_NAME = PROJECT_PATH.split('/')[-1]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '%s/core/dev.sqlite3' % PROJECT_PATH,                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': '%s/core/dev.sqlite3' % PROJECT_PATH,                      # Or path to database file if using sqlite3.
+#         'USER': '',                      # Not used with sqlite3.
+#         'PASSWORD': '',                  # Not used with sqlite3.
+#         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#     }
+# }
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

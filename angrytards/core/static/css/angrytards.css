@@ -86,7 +86,9 @@ a:hover {
 	display:none;
 }
 
-
+table thead {
+	font-size:20px;
+}
 
 
 

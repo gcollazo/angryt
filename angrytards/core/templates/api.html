@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% include 'topbar.html' %}
+    <div class="span-24">
+        <h1>API</h1>
+        <table>
+            <thead>
+                <td></td>
+                <td>URL</td>
+                <td>Description</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Story</strong></td>
+                    <td><a href="/story.json">http://eldia.24veces.com/story.json</a></td>
+                    <td>Lista de todas las noticias en la portada en formato JSON.</td>
+                </tr>
+                <tr>
+                    <td><strong>Comments</strong></td>
+                    <td><a href="/story/<STORY_ID>/comments/1.json">http://eldia.24veces.com/story/&lt;STORY_ID&gt;/comments/1.json</a></td>
+                    <td>Página 1 de los comentarios de la noticia &lt;STORY_ID&gt;.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
