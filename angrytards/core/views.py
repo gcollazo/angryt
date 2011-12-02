@@ -110,11 +110,13 @@ def get_comment_page(story_id, count, page, pages, host):
 
     if pages > int(page):
         comments['next_page'] = 'http://%s/story/%s/comments/%s/' % (host, story_id, int(page) + 1)
+        comments['next_page_json'] = 'http://%s/story/%s/comments/%s.json' % (host, story_id, int(page) + 1)
     else:
         comments['next_page'] = None
     
     if int(page) != 1 :
         comments['prev_page'] = 'http://%s/story/%s/comments/%s/' % (host, story_id, int(page) - 1)
+        comments['prev_page_json'] = 'http://%s/story/%s/comments/%s.json' % (host, story_id, int(page) - 1)
     else:
         comments['prev_page'] = None
 
