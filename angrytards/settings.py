@@ -4,7 +4,7 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ENDI_FEED = 'http://feeds.feedburner.com/elnuevodia/noticias'
+ENDI_FEED = 'http://elnuevodia.feedsportal.com/c/34275/f/623466/index.rss'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
