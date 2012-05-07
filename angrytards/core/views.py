@@ -38,7 +38,10 @@ def stories(request, format=None):
             'comments_json': 'http://%s/story/%s/comments/1.json' % (request.META['HTTP_HOST'], story_id)
         })
 
-    return HttpResponse(json.dumps(stories), mimetype='application/json')
+    if format == 'xml':
+        return render(request, 'sitemap.xml', {'stories':stories}, content_type='application/xml')
+    else:
+        return HttpResponse(json.dumps(stories), mimetype='application/json')
 
 
 def comments(request, story_id, page=None, format=None):

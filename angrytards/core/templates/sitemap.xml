@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://eldia.24veces.com/</loc>
+        <lastmod>{% now "Y-m-d" %}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    {% for story in stories %}
+    <url>
+        <loc>{{ story.comments }}</loc>
+        <lastmod>{% now "Y-m-d" %}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2</priority>
+    </url>
+    {% endfor %}
+</urlset>
